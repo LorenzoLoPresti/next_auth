@@ -16,7 +16,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      {/* suppressHydratationWarning elimina gli errori in console causati da estensioni
+      https://stackoverflow.com/questions/75337953/what-causes-nextjs-warning-extra-attributes-from-the-server-data-new-gr-c-s-c
+      */}
+      <body className={inter.className} suppressHydrationWarning>
+        {children}
+      </body>
     </html>
   );
 }

@@ -1,7 +1,14 @@
 import { FC, PropsWithChildren } from "react";
 import { Text, TextTags } from "@/components/ui/text";
+import { cn } from "@/lib/utils";
+
+const headerStyles = {
+  heading: "text-black",
+  p: "text-muted-foreground text-sm",
+};
 
 type TextBlockProps = PropsWithChildren<{
+  isHeader?: boolean;
   headingAs: TextTags;
   paragraphAs: TextTags;
   headingStyledAs?: TextTags;
@@ -10,6 +17,7 @@ type TextBlockProps = PropsWithChildren<{
 }>;
 
 const TextBlock = ({
+  isHeader = false,
   headingAs,
   paragraphAs,
   headingStyledAs = headingAs,
@@ -19,10 +27,18 @@ const TextBlock = ({
 }: TextBlockProps) => {
   return (
     <>
-      <Text as={headingAs} styledAs={headingStyledAs}>
+      <Text
+        as={headingAs}
+        styledAs={headingStyledAs}
+        className={cn(isHeader && headerStyles.heading)}
+      >
         {headingText}
       </Text>
-      <Text as={paragraphAs} styledAs={paragraphStyledAs}>
+      <Text
+        as={paragraphAs}
+        styledAs={paragraphStyledAs}
+        className={cn(isHeader && headerStyles.p)}
+      >
         {children}
       </Text>
     </>
