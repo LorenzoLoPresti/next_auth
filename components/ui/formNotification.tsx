@@ -30,7 +30,11 @@ export const FormNotification = ({
       ) : (
         <ExclamationTriangleIcon className="h-4 w-4" />
       )}
-      <Text className={cn(isSuccess ? "text-emerald-500" : "text-destructive")}>
+      <Text
+        className={cn(
+          isSuccess ? "text-emerald-500 text-sm" : "text-destructive text-sm"
+        )}
+      >
         {message}
       </Text>
     </div>
